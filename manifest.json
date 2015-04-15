@@ -1,0 +1,25 @@
+{
+    "manifest_version": 2,
+      "name": "chrome notifications",
+      "description": "__MSG_ext_desc__",
+      "version": "2",
+      "icons": {
+        "48": "images/double_sofa.png",
+        "48": "images/double_sofa.png",
+        "128": "images/door.png"
+       },
+      "permissions": [
+        "tabs", 
+        "http://*/*", 
+        "https://*/*", 
+        "notifications"
+      ],
+      "browser_action": {
+        "default_icon": "images/double_sofa.png",
+        "default_popup": "options.html",
+        "default_title": "Options "
+      },
+      "background": {
+          "scripts": ["background.js"]
+      }
+}
