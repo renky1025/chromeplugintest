@@ -47,18 +47,32 @@ let d = formatDate()
 dateEl.innerText = d;
 updateClock();
 
-function getPublicIP() {
-fetch("http://jsonip.com").then((response) => response.json())
-.then((data) => {
-	console.log(data)
-	let ip = data.ip
-	ipAddressEl.innerText = "Public IP: "+ip
-}).catch(err => {
-	console.error(err)
-})
+var sendNotice = (title, message) =>{
+    chrome.notifications.create(`notification-${Date.now()}`,
+        {
+        type: "basic",
+        title: title,
+        message: message,
+        iconUrl: chrome.runtime.getURL("hello_extensions.png")
+        }
+    );
 }
 
-getPublicIP()
+var getPublicIP = async () => {
+    const response = await fetch("http://httpbin.org/ip")
+    if (!response.ok) {
+        throw new Error('Network response was not ok')
+    }
+    const allData = await response.json()
+    console.log('service worker allData', allData)
+    console.log(allData)
+    let ip = allData.origin
+    ipAddressEl.innerText = "Public IP: "+ip
+
+    sendNotice("Public IP", ip)
+}
+
+
 
 const _console = console;
 const createlog = (util) => (...args) => {
@@ -73,5 +87,10 @@ const hello = (title, version) =>{
 		'padding: 2px 1px; border-radius: 0 3px 3px 0; color: #fff; background: #42c02e; font-weight: bold;',
 	);
 }
+var onInit = function() {
+    getPublicIP()
+    hello('ChromPluginTest','0.0.1');
+};
 
-hello('ChromPluginTest','0.0.1');  
+document.addEventListener('DOMContentLoaded', onInit, false);
+
