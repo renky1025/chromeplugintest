@@ -53,7 +53,7 @@ var sendNotice = (title, message) =>{
         type: "basic",
         title: title,
         message: message,
-        iconUrl: chrome.runtime.getURL("hello_extensions.png")
+        iconUrl: chrome.runtime.getURL("icon/motorcycle.png")
         }
     );
 }
