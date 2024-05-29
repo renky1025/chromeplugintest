@@ -10,6 +10,10 @@ icons：图标
 
 操作项（Action）
 ```shell
+"icons": {
+    "48": "motorcycle48.png", // show icon in extension page
+    "128": "motorcycle.png" // show icon in chrome bar
+},
 "action": {
     "default_icon": "icon/motorcycle.png",
     "default_title": "hello world Title",
