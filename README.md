@@ -41,3 +41,9 @@ Service Worker 在后台运行并处理浏览器事件
   }
 ]
 ```
+
+### DEMO
+
+![extension](example/D25D8054-B660-483b-9487-25C5CB5A4EF5.png "extension")
+![popup](example/7E497081-A2A4-49cf-94DF-65F20BC9D42E.png "popup")
+![notice](example/51162027-AEA3-4aaf-A803-D5B294D2FA17.png "notice")
